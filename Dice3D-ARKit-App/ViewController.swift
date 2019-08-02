@@ -25,26 +25,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
         
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
-//        let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
-//
-//        let cubeMaterial = SCNMaterial()
-//        cubeMaterial.diffuse.contents = UIColor.blue
-//
-//
-//        cube.materials = [cubeMaterial]
-//
-//        let node = SCNNode()
-//        node.position = SCNVector3(0, 0.1, -1)
-//        node.geometry = cube
-//
-//        sceneView.scene.rootNode.addChildNode(node)
-//        sceneView.autoenablesDefaultLighting = true
-        // Create a new scene
-        
-        
-        
-        // Set the scene to the view
-        //sceneView.scene = scene
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +48,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBAction func rollAgain(_ sender: UIBarButtonItem) {
         rollAll()
+    }
+    
+    
+    @IBAction func removeAllDice(_ sender: UIBarButtonItem) {
+        for dice in diceArray {
+            dice.removeFromParentNode()
+        }
     }
     
     private func rollAll() {
@@ -92,14 +80,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     // MARK: - ARSCNViewDelegate
     
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
